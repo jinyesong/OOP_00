@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{af4527a5-6893-4e00-b52d-e52ba56006a7}</ProjectGuid>
-    <RootNamespace>oopweek05</RootNamespace>
+    <ProjectGuid>{d8e591a1-b666-4cc9-9e5a-8112656a7ddd}</ProjectGuid>
+    <RootNamespace>oopweek06</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,19 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Desktop\객체지향설계\WEEK05_CODE\example01.cpp">
+    <ClCompile Include="..\..\..\..\..\Desktop\객체지향설계\WEEK06_CODE\training_02.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\객체지향설계\WEEK05_CODE\example02.cpp" />
-    <ClCompile Include="homework01.cpp">
+    <ClCompile Include="..\..\..\..\..\Desktop\객체지향설계\WEEK06_CODE\training_03.cpp" />
+    <ClCompile Include="homework_06_01.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="homework02.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\..\Desktop\객체지향설계\WEEK05_CODE.zip" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
