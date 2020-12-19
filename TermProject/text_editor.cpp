@@ -13,7 +13,7 @@ int thisPageIndex = 0;
 string consoleMessage = "";
 string input;
 
-string printString(int index) { //ì¸ìë¡œ ë°›ì€ ì¸ë±ìŠ¤ ì¤„ ë¶€í„° ì¶œë ¥
+string printString(int index) { //ÀÎÀÚ·Î ¹ŞÀº ÀÎµ¦½º ÁÙ ºÎÅÍ Ãâ·Â
 	string input;
 	int count = 1;
 	for (int i = index; i < index+20; i++) {
@@ -30,17 +30,17 @@ string printString(int index) { //ì¸ìë¡œ ë°›ì€ ì¸ë±ìŠ¤ ì¤„ ë¶€í„° ì¶œë ¥
 		count++;
 	}
 	cout << "---------------------------------------------------------------------------" << endl; //75byte
-	cout << "n:ë‹¤ìŒí˜ì´ì§€, p:ì´ì „í˜ì´ì§€, i:ì‚½ì…, d:ì‚­ì œ, c:ë³€ê²½, s:ì°¾ê¸°, t:ì €ì¥í›„ì¢…ë£Œ" << endl;
+	cout << "n:´ÙÀ½ÆäÀÌÁö, p:ÀÌÀüÆäÀÌÁö, i:»ğÀÔ, d:»èÁ¦, c:º¯°æ, s:Ã£±â, t:ÀúÀåÈÄÁ¾·á" << endl;
 	cout << "---------------------------------------------------------------------------" << endl;
 	if (consoleMessage == "") {
-		cout << "(ì½˜ì†”ë©”ì‹œì§€)" << endl;
+		cout << "(ÄÜ¼Ö¸Ş½ÃÁö)" << endl;
 	}
 	else {
 		cout << consoleMessage << endl;
 		consoleMessage = "";
 	}
 	cout << "---------------------------------------------------------------------------" << endl;
-	cout << "ì…ë ¥: ";
+	cout << "ÀÔ·Â: ";
 	getline(cin, input);
 	cout << "---------------------------------------------------------------------------" << endl;
 
@@ -59,7 +59,7 @@ void reConstruct() {
 			byte += length;
 			if (byte <= 71) {
 				innervec.push_back(word);
-				byte += 1; //ë„ì–´ì“°ê¸°
+				byte += 1; //¶ç¾î¾²±â
 			}
 			else {
 				newVec.push_back(innervec);
@@ -82,15 +82,15 @@ public:
 class NextPage : public EditStrategy {
 public:
 	void edit() {
-		int nextPageIndex = thisPageIndex + 20; //ë‹¤ìŒí˜ì´ì§€ ì‹œì‘
+		int nextPageIndex = thisPageIndex + 20; //´ÙÀ½ÆäÀÌÁö ½ÃÀÛ
 
-		if (nextPageIndex == vec.size()) { //ë§ˆì§€ë§‰ í˜ì´ì§€
+		if (nextPageIndex == vec.size()) { //¸¶Áö¸· ÆäÀÌÁö
 			consoleMessage = "This is the last page!";
 			input = printString(thisPageIndex);
 		}
-		else if (nextPageIndex < vec.size() && nextPageIndex + 20 > vec.size()) { //ë§ˆì§€ë§‰ í˜ì´ì§€ 20ì¤„ ë¯¸ë§Œ
+		else if (nextPageIndex < vec.size() && nextPageIndex + 20 > vec.size()) { //¸¶Áö¸· ÆäÀÌÁö 20ÁÙ ¹Ì¸¸
 			int line = 0;
-			while (nextPageIndex < vec.size()) { //ë§ˆì§€ë§‰ ì¤„ê¹Œì§€ ëª‡ ì¤„ ë‚¨ì•˜ëŠ”ì§€
+			while (nextPageIndex < vec.size()) { //¸¶Áö¸· ÁÙ±îÁö ¸î ÁÙ ³²¾Ò´ÂÁö
 				nextPageIndex++;
 				line++;
 			}
@@ -130,8 +130,8 @@ public:
 		int wordIndex = atoi(argvec[1].c_str());
 		string word = argvec[2];
 
-		if (vec[thisPageIndex + line - 1].size() < wordIndex) { //ë¼ì¸ ê²€ìƒ‰ê²°ê³¼ në²ˆì§¸ ë‹¨ì–´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ
-			consoleMessage = "í•´ë‹¹ ìœ„ì¹˜ì— ë‹¨ì–´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+		if (vec[thisPageIndex + line - 1].size() < wordIndex) { //¶óÀÎ °Ë»ö°á°ú n¹øÂ° ´Ü¾î Á¸ÀçÇÏÁö ¾ÊÀ½
+			consoleMessage = "ÇØ´ç À§Ä¡¿¡ ´Ü¾î°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
 			input = printString(thisPageIndex);
 		}
 		else {
@@ -153,8 +153,8 @@ public:
 		int line = atoi(argvec[0].c_str());
 		int wordIndex = atoi(argvec[1].c_str());
 
-		if (vec[thisPageIndex + line - 1].size() < wordIndex) { //ë¼ì¸ ê²€ìƒ‰ê²°ê³¼ në²ˆì§¸ ë‹¨ì–´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ
-			consoleMessage = "í•´ë‹¹ ìœ„ì¹˜ì— ë‹¨ì–´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+		if (vec[thisPageIndex + line - 1].size() < wordIndex) { //¶óÀÎ °Ë»ö°á°ú n¹øÂ° ´Ü¾î Á¸ÀçÇÏÁö ¾ÊÀ½
+			consoleMessage = "ÇØ´ç À§Ä¡¿¡ ´Ü¾î°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
 			input = printString(thisPageIndex);
 		}
 		else {
@@ -213,7 +213,7 @@ public:
 			}
 		}
 		if (!find) {
-			consoleMessage = "ë‹¨ì–´ë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.";
+			consoleMessage = "´Ü¾î¸¦ Ã£Áö ¸øÇß½À´Ï´Ù.";
 			input = printString(thisPageIndex);
 		}
 	}
@@ -255,7 +255,7 @@ public:
 };
 
 int main() {
-	//íŒŒì¼ ì½ì–´ì™€ì„œ ì´ì°¨ì› ë²¡í„° êµ¬ì„±
+	//ÆÄÀÏ ÀĞ¾î¿Í¼­ ÀÌÂ÷¿ø º¤ÅÍ ±¸¼º
 	ifstream file;
 	file.open("test.txt");
 	char word[20];
@@ -267,7 +267,7 @@ int main() {
 		byte += length;
 		if (byte <= 71) {
 			innervec.push_back(word);
-			byte += 1; //ë„ì–´ì“°ê¸°
+			byte += 1; //¶ç¾î¾²±â
 		}
 		else {
 			vec.push_back(innervec);
@@ -284,7 +284,7 @@ int main() {
 		string arg;
 		vector<string> argvec;
 		if (input.length() > 3) {
-			arg = input.substr(2, input.length() - 3); //ê´„í˜¸ ì•ˆì˜ ì¸ìë“¤
+			arg = input.substr(2, input.length() - 3); //°ıÈ£ ¾ÈÀÇ ÀÎÀÚµé
 			char ch[100];
 			strcpy(ch, arg.c_str());
 			char* token = strtok(ch, ",");
@@ -306,35 +306,35 @@ int main() {
 			user->edit();
 		}
 		else if (check == "i") {
-			if (input.substr(1,1)!="(" && input.substr(input.length()-2, 1)!=")") { //ë¹„ì •ìƒì ì¸ ì…ë ¥
-				consoleMessage = "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+			if (input.substr(1,1)!="(" && input.substr(input.length()-2, 1)!=")") { //ºñÁ¤»óÀûÀÎ ÀÔ·Â
+				consoleMessage = "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 				isError = true;
 			}
-			for (char const& c : argvec[0]) { //íŠ¹ìˆ˜ë¬¸ì ì…ë ¥
+			for (char const& c : argvec[0]) { //Æ¯¼ö¹®ÀÚ ÀÔ·Â
 				if (!isdigit(c) && c != char(" ")) {
-					consoleMessage = "íŠ¹ìˆ˜ë¬¸ìë¥¼ í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤.";
+					consoleMessage = "Æ¯¼ö¹®ÀÚ¸¦ Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù.";
 					isError = true;
 					break;
 				}
 			}
-			for (char const& c : argvec[1]) { //íŠ¹ìˆ˜ë¬¸ì ì…ë ¥
+			for (char const& c : argvec[1]) { //Æ¯¼ö¹®ÀÚ ÀÔ·Â
 				if (!isdigit(c)) {
-					consoleMessage = "íŠ¹ìˆ˜ë¬¸ìë¥¼ í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤.";
+					consoleMessage = "Æ¯¼ö¹®ÀÚ¸¦ Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù.";
 					isError = true;
 					break;
 				}
 			}
-			if (argvec[2].length() >= 71) { //75ë°”ì´íŠ¸ ì´ìƒ ì…ë ¥
-				consoleMessage = "ê¸€ììˆ˜ê°€ ë„ˆë¬´ ë§ìŠµë‹ˆë‹¤.";
+			if (argvec[2].length() >= 71) { //75¹ÙÀÌÆ® ÀÌ»ó ÀÔ·Â
+				consoleMessage = "±ÛÀÚ¼ö°¡ ³Ê¹« ¸¹½À´Ï´Ù.";
 				isError = true;
 			}
-			if (arg.find(" ") != string::npos) { //ê´„í˜¸ì•ˆì— ê³µë°±ì´ í¬í•¨ëœ ê²½ìš°
-				consoleMessage = "ê´„í˜¸ ì•ˆì— ê³µë°±ì´ í¬í•¨ë˜ì–´ìˆìŠµë‹ˆë‹¤.";
+			if (arg.find(" ") != string::npos) { //°ıÈ£¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÈ °æ¿ì
+				consoleMessage = "°ıÈ£ ¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÇ¾îÀÖ½À´Ï´Ù.";
 				isError = true;
 			}
 			int line = atoi(argvec[0].c_str());
 			if (line < 1 || line > 20) {
-				consoleMessage = "ë¼ì¸ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+				consoleMessage = "¶óÀÎÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
 				isError = true;
 			}
 
@@ -349,17 +349,17 @@ int main() {
 			}
 		}
 		else if (check == "d") {
-			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ë¹„ì •ìƒì ì¸ ì…ë ¥
-				consoleMessage = "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ºñÁ¤»óÀûÀÎ ÀÔ·Â
+				consoleMessage = "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 				isError = true;
 			}
-			if (arg.find(" ") != string::npos) { //ê´„í˜¸ì•ˆì— ê³µë°±ì´ í¬í•¨ëœ ê²½ìš°
-				consoleMessage = "ê´„í˜¸ ì•ˆì— ê³µë°±ì´ í¬í•¨ë˜ì–´ìˆìŠµë‹ˆë‹¤.";
+			if (arg.find(" ") != string::npos) { //°ıÈ£¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÈ °æ¿ì
+				consoleMessage = "°ıÈ£ ¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÇ¾îÀÖ½À´Ï´Ù.";
 				isError = true;
 			}
 			int line = atoi(argvec[0].c_str());
 			if (line < 1 || line > 20) {
-				consoleMessage = "ë¼ì¸ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+				consoleMessage = "¶óÀÎÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
 				isError = true;
 			}
 
@@ -374,12 +374,12 @@ int main() {
 			}
 		}
 		else if (check == "c") {
-			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ë¹„ì •ìƒì ì¸ ì…ë ¥
-				consoleMessage = "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ºñÁ¤»óÀûÀÎ ÀÔ·Â
+				consoleMessage = "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 				isError = true;
 			}
-			if (arg.find(" ") != string::npos) { //ê´„í˜¸ì•ˆì— ê³µë°±ì´ í¬í•¨ëœ ê²½ìš°
-				consoleMessage = "ê´„í˜¸ ì•ˆì— ê³µë°±ì´ í¬í•¨ë˜ì–´ìˆìŠµë‹ˆë‹¤.";
+			if (arg.find(" ") != string::npos) { //°ıÈ£¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÈ °æ¿ì
+				consoleMessage = "°ıÈ£ ¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÇ¾îÀÖ½À´Ï´Ù.";
 				isError = true;
 			}
 
@@ -394,12 +394,12 @@ int main() {
 			}
 		}
 		else if (check == "s") {
-			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ë¹„ì •ìƒì ì¸ ì…ë ¥
-				consoleMessage = "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+			if (input.substr(1, 1) != "(" && input.substr(input.length() - 2, 1) != ")") { //ºñÁ¤»óÀûÀÎ ÀÔ·Â
+				consoleMessage = "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 				isError = true;
 			}
-			if (arg.find(" ") != string::npos) { //ê´„í˜¸ì•ˆì— ê³µë°±ì´ í¬í•¨ëœ ê²½ìš°
-				consoleMessage = "ê´„í˜¸ ì•ˆì— ê³µë°±ì´ í¬í•¨ë˜ì–´ìˆìŠµë‹ˆë‹¤.";
+			if (arg.find(" ") != string::npos) { //°ıÈ£¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÈ °æ¿ì
+				consoleMessage = "°ıÈ£ ¾È¿¡ °ø¹éÀÌ Æ÷ÇÔµÇ¾îÀÖ½À´Ï´Ù.";
 				isError = true;
 			}
 
@@ -421,7 +421,7 @@ int main() {
 			break;
 		}
 		else {
-			consoleMessage = "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.";
+			consoleMessage = "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.";
 			input = printString(thisPageIndex);
 		}
 	}
