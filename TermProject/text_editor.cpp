@@ -283,7 +283,7 @@ int main() {
 		string check = input.substr(0, 1);
 		string arg;
 		vector<string> argvec;
-		if (input.length() > 3) {
+		if (input.length() > 1) {
 			arg = input.substr(2, input.length() - 3); //괄호 안의 인자들
 			char ch[100];
 			strcpy(ch, arg.c_str());
