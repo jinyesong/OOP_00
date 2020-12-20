@@ -231,6 +231,7 @@ public:
 				}
 			}
 		}
+		file.close();
 	}
 };
 
